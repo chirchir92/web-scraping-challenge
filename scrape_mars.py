@@ -17,6 +17,8 @@ def scrape():
     image_url='https://marshemispheres.com/'
     browser.visit(url)
     
+    time.sleep()
+    
     # use bs4 to parse the html
     html=browser.html
     soup=bs(html, 'html.parser')
