@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mars info</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/scrape" role="button">scrape new data</a>
+            </p>
+        </div>
+        <!--latest mars news-->
+        <div class="row .col-md-3">
+            <div class="col-md-12">
+                <div class="image">
+                    <div class="media-body">
+                        <h2><strong>latest mars news</strong></h2>
+                        <h3>{{mars.news_title}}</h3>
+                        <p>{{ mars.news_p }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--featured mars img-->
+        <div class="row container">
+            <div class="'col-md-6">
+                <h2><strong>featured mars image</strong></h2>
+                <img class="img-responsive" src="{{mars.image_url}}" alt="featured mars image" />
+            </div>
+            <!--mars facts-->
+            <div class="col-md-4">
+                <div class="row col-md-1">
+                    <h3>mars facts</h3>
+                    {{mars.mars_facts}}
+                </div>
+            </div>
+        </div>
+        <!--mars hemispheres-->
+        <div class="row">
+            <div class="page-header">
+                <h2 class="text-center">mars hemispheres</h2>
+            </div>
+            {% for img in images %}
+            <div class="col-md-6">
+                <div class="thumnbnail">
+                    <img src="{{mars.hemisphere_image_urls | default('static/images/error.png', true)}}" alt="responsive image" class="img-responsive">
+                    <div class="capition">
+                        <h4>{{mars.title}}</h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
