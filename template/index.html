@@ -22,8 +22,8 @@
             <div class="col-md-12">
                 <div class="image">
                     <div class="media-body">
-                        <h2><strong>latest mars news</strong></h2>
-                        <h3>{{ mars.news_title }}</h3>
+                        <h3><strong>Latest mars news</strong></h3>
+                        <h4>{{ mars.news_title }}</h4>
                         <p>{{ mars.news_p }}</p>
                     </div>
                 </div>
@@ -31,29 +31,29 @@
         </div>
         <!--featured mars img-->
         <div class="row container">
-            <div class="'col-md-6">
-                <h2><strong>featured mars image</strong></h2>
-                <img class="img-responsive" src="{{ mars.image_url }}" alt="featured mars image" />
+            <div class="'col-xs-8">
+                <h3><strong>Featured mars image</strong></h3>
+                <img class="img-responsive" src="{{ mars.image_url | default('static/images/error.png', true)}}" alt="responsive image" />
             </div>
             <!--mars facts-->
-            <div class="col-md-4">
+            <div class="col-xs-4">
                 <div class="row col-md-1">
-                    <h3>mars facts</h3>
-                    {{ mars.mars_facts }}
+                    <h3>Mars facts</h3>
+                    <table class="table table-striped">{{ mars.mars_facts | safe}}</table>
                 </div>
             </div>
         </div>
         <!--mars hemispheres-->
         <div class="row">
             <div class="page-header">
-                <h2 class="text-center">mars hemispheres</h2>
+                <h3 class="text-center"><strong>Mars hemispheres</strong></h3>
             </div>
-            {% for img in images %}
+            {% for img in mars.hemisphere_image_urls %}
             <div class="col-md-6">
                 <div class="thumnbnail">
-                    <img src="{{mars.hemisphere_image_urls | default('static/images/error.png', true)}}" alt="responsive image" class="img-responsive">
+                    <img src="{{img.url_1 | default('static/images/error.png', true)}}" alt="responsive image" class="img-responsive">
                     <div class="capition">
-                        <h4>{{ mars.title }}</h4>
+                        <h4>{{ img.title }}</h4>
                     </div>
                 </div>
             </div>
